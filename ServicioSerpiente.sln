@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34928.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos", "AccesoDatos\AccesoDatos.csproj", "{9138A797-8808-4484-9F5E-49948810DFFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{1479A240-A91E-4364-A9CD-D721790A6AD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{3615BF8E-B08C-4797-8B93-437A5F876FCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9138A797-8808-4484-9F5E-49948810DFFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9138A797-8808-4484-9F5E-49948810DFFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9138A797-8808-4484-9F5E-49948810DFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9138A797-8808-4484-9F5E-49948810DFFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1479A240-A91E-4364-A9CD-D721790A6AD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1479A240-A91E-4364-A9CD-D721790A6AD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1479A240-A91E-4364-A9CD-D721790A6AD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1479A240-A91E-4364-A9CD-D721790A6AD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3615BF8E-B08C-4797-8B93-437A5F876FCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3615BF8E-B08C-4797-8B93-437A5F876FCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3615BF8E-B08C-4797-8B93-437A5F876FCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3615BF8E-B08C-4797-8B93-437A5F876FCC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {35215927-037D-4EF2-8BD6-F707AF1726AD}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,497 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="bdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Buses">
+          <Key>
+            <PropertyRef Name="ID_Bus" />
+          </Key>
+          <Property Name="ID_Bus" Type="int" Nullable="false" />
+          <Property Name="NumUnidadBus" Type="varchar" MaxLength="20" />
+          <Property Name="Marca" Type="varchar" MaxLength="50" />
+          <Property Name="Modelo" Type="varchar" MaxLength="50" />
+          <Property Name="Capacidad_Pasajeros" Type="int" />
+        </EntityType>
+        <EntityType Name="Conductores">
+          <Key>
+            <PropertyRef Name="ID_Conductor" />
+          </Key>
+          <Property Name="ID_Conductor" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" />
+          <Property Name="Cedula" Type="varchar" MaxLength="30" />
+          <Property Name="ConduTelefono" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Horarios">
+          <Key>
+            <PropertyRef Name="ID_Horario" />
+          </Key>
+          <Property Name="ID_Horario" Type="int" Nullable="false" />
+          <Property Name="ID_Ruta" Type="int" />
+          <Property Name="ID_Bus" Type="int" />
+          <Property Name="ID_Conductor" Type="int" />
+          <Property Name="Dia_Semana" Type="varchar" MaxLength="20" />
+          <Property Name="Hora_Salida" Type="time" Precision="7" />
+          <Property Name="Hora_Llegada" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Pasajeros">
+          <Key>
+            <PropertyRef Name="ID_Pasajero" />
+          </Key>
+          <Property Name="ID_Pasajero" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" />
+          <Property Name="Telefono" Type="varchar" MaxLength="20" />
+          <Property Name="Correo_Electronico" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Reservas">
+          <Key>
+            <PropertyRef Name="ID_Reserva" />
+          </Key>
+          <Property Name="ID_Reserva" Type="int" Nullable="false" />
+          <Property Name="ID_Horario" Type="int" />
+          <Property Name="ID_Pasajero" Type="int" />
+          <Property Name="Numero_Asientos_Reservados" Type="int" />
+          <Property Name="Estado_Reserva" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_Reserva" Type="date" />
+        </EntityType>
+        <EntityType Name="Rutas">
+          <Key>
+            <PropertyRef Name="ID_Ruta" />
+          </Key>
+          <Property Name="ID_Ruta" Type="int" Nullable="false" />
+          <Property Name="Origen" Type="varchar" MaxLength="100" />
+          <Property Name="Destino" Type="varchar" MaxLength="100" />
+          <Property Name="Distancia" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Duracion_Estimada" Type="time" Precision="7" />
+          <Property Name="Foto" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Tickets">
+          <Key>
+            <PropertyRef Name="ID_Ticket" />
+          </Key>
+          <Property Name="ID_Ticket" Type="int" Nullable="false" />
+          <Property Name="ID_Reserva" Type="int" />
+          <Property Name="Precio" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Estado_Pago" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__Horarios__ID_Bus__3E52440B">
+          <End Role="Buses" Type="Self.Buses" Multiplicity="0..1" />
+          <End Role="Horarios" Type="Self.Horarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buses">
+              <PropertyRef Name="ID_Bus" />
+            </Principal>
+            <Dependent Role="Horarios">
+              <PropertyRef Name="ID_Bus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Horarios__ID_Con__3F466844">
+          <End Role="Conductores" Type="Self.Conductores" Multiplicity="0..1" />
+          <End Role="Horarios" Type="Self.Horarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conductores">
+              <PropertyRef Name="ID_Conductor" />
+            </Principal>
+            <Dependent Role="Horarios">
+              <PropertyRef Name="ID_Conductor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Horarios__ID_Rut__3D5E1FD2">
+          <End Role="Rutas" Type="Self.Rutas" Multiplicity="0..1" />
+          <End Role="Horarios" Type="Self.Horarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rutas">
+              <PropertyRef Name="ID_Ruta" />
+            </Principal>
+            <Dependent Role="Horarios">
+              <PropertyRef Name="ID_Ruta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservas__ID_Hor__440B1D61">
+          <End Role="Horarios" Type="Self.Horarios" Multiplicity="0..1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horarios">
+              <PropertyRef Name="ID_Horario" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="ID_Horario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservas__ID_Pas__44FF419A">
+          <End Role="Pasajeros" Type="Self.Pasajeros" Multiplicity="0..1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pasajeros">
+              <PropertyRef Name="ID_Pasajero" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="ID_Pasajero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets__ID_Rese__47DBAE45">
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservas">
+              <PropertyRef Name="ID_Reserva" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="ID_Reserva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ObtenerCedulaConductor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="conductor_id" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="bdModelStoreContainer">
+          <EntitySet Name="Buses" EntityType="Self.Buses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Conductores" EntityType="Self.Conductores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Horarios" EntityType="Self.Horarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pasajeros" EntityType="Self.Pasajeros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservas" EntityType="Self.Reservas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rutas" EntityType="Self.Rutas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Horarios__ID_Bus__3E52440B" Association="Self.FK__Horarios__ID_Bus__3E52440B">
+            <End Role="Buses" EntitySet="Buses" />
+            <End Role="Horarios" EntitySet="Horarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Horarios__ID_Con__3F466844" Association="Self.FK__Horarios__ID_Con__3F466844">
+            <End Role="Conductores" EntitySet="Conductores" />
+            <End Role="Horarios" EntitySet="Horarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Horarios__ID_Rut__3D5E1FD2" Association="Self.FK__Horarios__ID_Rut__3D5E1FD2">
+            <End Role="Rutas" EntitySet="Rutas" />
+            <End Role="Horarios" EntitySet="Horarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservas__ID_Hor__440B1D61" Association="Self.FK__Reservas__ID_Hor__440B1D61">
+            <End Role="Horarios" EntitySet="Horarios" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservas__ID_Pas__44FF419A" Association="Self.FK__Reservas__ID_Pas__44FF419A">
+            <End Role="Pasajeros" EntitySet="Pasajeros" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets__ID_Rese__47DBAE45" Association="Self.FK__Tickets__ID_Rese__47DBAE45">
+            <End Role="Reservas" EntitySet="Reservas" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Buses">
+          <Key>
+            <PropertyRef Name="ID_Bus" />
+          </Key>
+          <Property Name="ID_Bus" Type="Int32" Nullable="false" />
+          <Property Name="NumUnidadBus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Capacidad_Pasajeros" Type="Int32" />
+          <NavigationProperty Name="Horarios" Relationship="Self.FK__Horarios__ID_Bus__3E52440B" FromRole="Buses" ToRole="Horarios" />
+        </EntityType>
+        <EntityType Name="Conductores">
+          <Key>
+            <PropertyRef Name="ID_Conductor" />
+          </Key>
+          <Property Name="ID_Conductor" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ConduTelefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Horarios" Relationship="Self.FK__Horarios__ID_Con__3F466844" FromRole="Conductores" ToRole="Horarios" />
+        </EntityType>
+        <EntityType Name="Horarios">
+          <Key>
+            <PropertyRef Name="ID_Horario" />
+          </Key>
+          <Property Name="ID_Horario" Type="Int32" Nullable="false" />
+          <Property Name="ID_Ruta" Type="Int32" />
+          <Property Name="ID_Bus" Type="Int32" />
+          <Property Name="ID_Conductor" Type="Int32" />
+          <Property Name="Dia_Semana" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Hora_Salida" Type="Time" Precision="7" />
+          <Property Name="Hora_Llegada" Type="Time" Precision="7" />
+          <NavigationProperty Name="Buses" Relationship="Self.FK__Horarios__ID_Bus__3E52440B" FromRole="Horarios" ToRole="Buses" />
+          <NavigationProperty Name="Conductores" Relationship="Self.FK__Horarios__ID_Con__3F466844" FromRole="Horarios" ToRole="Conductores" />
+          <NavigationProperty Name="Rutas" Relationship="Self.FK__Horarios__ID_Rut__3D5E1FD2" FromRole="Horarios" ToRole="Rutas" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK__Reservas__ID_Hor__440B1D61" FromRole="Horarios" ToRole="Reservas" />
+        </EntityType>
+        <EntityType Name="Pasajeros">
+          <Key>
+            <PropertyRef Name="ID_Pasajero" />
+          </Key>
+          <Property Name="ID_Pasajero" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Correo_Electronico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK__Reservas__ID_Pas__44FF419A" FromRole="Pasajeros" ToRole="Reservas" />
+        </EntityType>
+        <EntityType Name="Reservas">
+          <Key>
+            <PropertyRef Name="ID_Reserva" />
+          </Key>
+          <Property Name="ID_Reserva" Type="Int32" Nullable="false" />
+          <Property Name="ID_Horario" Type="Int32" />
+          <Property Name="ID_Pasajero" Type="Int32" />
+          <Property Name="Numero_Asientos_Reservados" Type="Int32" />
+          <Property Name="Estado_Reserva" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Reserva" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Horarios" Relationship="Self.FK__Reservas__ID_Hor__440B1D61" FromRole="Reservas" ToRole="Horarios" />
+          <NavigationProperty Name="Pasajeros" Relationship="Self.FK__Reservas__ID_Pas__44FF419A" FromRole="Reservas" ToRole="Pasajeros" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK__Tickets__ID_Rese__47DBAE45" FromRole="Reservas" ToRole="Tickets" />
+        </EntityType>
+        <EntityType Name="Rutas">
+          <Key>
+            <PropertyRef Name="ID_Ruta" />
+          </Key>
+          <Property Name="ID_Ruta" Type="Int32" Nullable="false" />
+          <Property Name="Origen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Destino" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Distancia" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Duracion_Estimada" Type="Time" Precision="7" />
+          <Property Name="Foto" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Horarios" Relationship="Self.FK__Horarios__ID_Rut__3D5E1FD2" FromRole="Rutas" ToRole="Horarios" />
+        </EntityType>
+        <EntityType Name="Tickets">
+          <Key>
+            <PropertyRef Name="ID_Ticket" />
+          </Key>
+          <Property Name="ID_Ticket" Type="Int32" Nullable="false" />
+          <Property Name="ID_Reserva" Type="Int32" />
+          <Property Name="Precio" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Estado_Pago" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK__Tickets__ID_Rese__47DBAE45" FromRole="Tickets" ToRole="Reservas" />
+        </EntityType>
+        <Association Name="FK__Horarios__ID_Bus__3E52440B">
+          <End Role="Buses" Type="Self.Buses" Multiplicity="0..1" />
+          <End Role="Horarios" Type="Self.Horarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buses">
+              <PropertyRef Name="ID_Bus" />
+            </Principal>
+            <Dependent Role="Horarios">
+              <PropertyRef Name="ID_Bus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Horarios__ID_Con__3F466844">
+          <End Role="Conductores" Type="Self.Conductores" Multiplicity="0..1" />
+          <End Role="Horarios" Type="Self.Horarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conductores">
+              <PropertyRef Name="ID_Conductor" />
+            </Principal>
+            <Dependent Role="Horarios">
+              <PropertyRef Name="ID_Conductor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Horarios__ID_Rut__3D5E1FD2">
+          <End Role="Rutas" Type="Self.Rutas" Multiplicity="0..1" />
+          <End Role="Horarios" Type="Self.Horarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rutas">
+              <PropertyRef Name="ID_Ruta" />
+            </Principal>
+            <Dependent Role="Horarios">
+              <PropertyRef Name="ID_Ruta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservas__ID_Hor__440B1D61">
+          <End Role="Horarios" Type="Self.Horarios" Multiplicity="0..1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horarios">
+              <PropertyRef Name="ID_Horario" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="ID_Horario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservas__ID_Pas__44FF419A">
+          <End Role="Pasajeros" Type="Self.Pasajeros" Multiplicity="0..1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pasajeros">
+              <PropertyRef Name="ID_Pasajero" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="ID_Pasajero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets__ID_Rese__47DBAE45">
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservas">
+              <PropertyRef Name="ID_Reserva" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="ID_Reserva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="servicioEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Buses" EntityType="Self.Buses" />
+          <EntitySet Name="Conductores" EntityType="Self.Conductores" />
+          <EntitySet Name="Horarios" EntityType="Self.Horarios" />
+          <EntitySet Name="Pasajeros" EntityType="Self.Pasajeros" />
+          <EntitySet Name="Reservas" EntityType="Self.Reservas" />
+          <EntitySet Name="Rutas" EntityType="Self.Rutas" />
+          <EntitySet Name="Tickets" EntityType="Self.Tickets" />
+          <AssociationSet Name="FK__Horarios__ID_Bus__3E52440B" Association="Self.FK__Horarios__ID_Bus__3E52440B">
+            <End Role="Buses" EntitySet="Buses" />
+            <End Role="Horarios" EntitySet="Horarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Horarios__ID_Con__3F466844" Association="Self.FK__Horarios__ID_Con__3F466844">
+            <End Role="Conductores" EntitySet="Conductores" />
+            <End Role="Horarios" EntitySet="Horarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Horarios__ID_Rut__3D5E1FD2" Association="Self.FK__Horarios__ID_Rut__3D5E1FD2">
+            <End Role="Rutas" EntitySet="Rutas" />
+            <End Role="Horarios" EntitySet="Horarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservas__ID_Hor__440B1D61" Association="Self.FK__Reservas__ID_Hor__440B1D61">
+            <End Role="Horarios" EntitySet="Horarios" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservas__ID_Pas__44FF419A" Association="Self.FK__Reservas__ID_Pas__44FF419A">
+            <End Role="Pasajeros" EntitySet="Pasajeros" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets__ID_Rese__47DBAE45" Association="Self.FK__Tickets__ID_Rese__47DBAE45">
+            <End Role="Reservas" EntitySet="Reservas" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <FunctionImport Name="ObtenerCedulaConductor" ReturnType="Collection(String)">
+            <Parameter Name="conductor_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bdModelStoreContainer" CdmEntityContainer="servicioEntities">
+          <EntitySetMapping Name="Buses">
+            <EntityTypeMapping TypeName="bdModel.Buses">
+              <MappingFragment StoreEntitySet="Buses">
+                <ScalarProperty Name="ID_Bus" ColumnName="ID_Bus" />
+                <ScalarProperty Name="NumUnidadBus" ColumnName="NumUnidadBus" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Capacidad_Pasajeros" ColumnName="Capacidad_Pasajeros" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Conductores">
+            <EntityTypeMapping TypeName="bdModel.Conductores">
+              <MappingFragment StoreEntitySet="Conductores">
+                <ScalarProperty Name="ID_Conductor" ColumnName="ID_Conductor" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="ConduTelefono" ColumnName="ConduTelefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Horarios">
+            <EntityTypeMapping TypeName="bdModel.Horarios">
+              <MappingFragment StoreEntitySet="Horarios">
+                <ScalarProperty Name="ID_Horario" ColumnName="ID_Horario" />
+                <ScalarProperty Name="ID_Ruta" ColumnName="ID_Ruta" />
+                <ScalarProperty Name="ID_Bus" ColumnName="ID_Bus" />
+                <ScalarProperty Name="ID_Conductor" ColumnName="ID_Conductor" />
+                <ScalarProperty Name="Dia_Semana" ColumnName="Dia_Semana" />
+                <ScalarProperty Name="Hora_Salida" ColumnName="Hora_Salida" />
+                <ScalarProperty Name="Hora_Llegada" ColumnName="Hora_Llegada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pasajeros">
+            <EntityTypeMapping TypeName="bdModel.Pasajeros">
+              <MappingFragment StoreEntitySet="Pasajeros">
+                <ScalarProperty Name="ID_Pasajero" ColumnName="ID_Pasajero" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo_Electronico" ColumnName="Correo_Electronico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservas">
+            <EntityTypeMapping TypeName="bdModel.Reservas">
+              <MappingFragment StoreEntitySet="Reservas">
+                <ScalarProperty Name="ID_Reserva" ColumnName="ID_Reserva" />
+                <ScalarProperty Name="ID_Horario" ColumnName="ID_Horario" />
+                <ScalarProperty Name="ID_Pasajero" ColumnName="ID_Pasajero" />
+                <ScalarProperty Name="Numero_Asientos_Reservados" ColumnName="Numero_Asientos_Reservados" />
+                <ScalarProperty Name="Estado_Reserva" ColumnName="Estado_Reserva" />
+                <ScalarProperty Name="Fecha_Reserva" ColumnName="Fecha_Reserva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rutas">
+            <EntityTypeMapping TypeName="bdModel.Rutas">
+              <MappingFragment StoreEntitySet="Rutas">
+                <ScalarProperty Name="ID_Ruta" ColumnName="ID_Ruta" />
+                <ScalarProperty Name="Origen" ColumnName="Origen" />
+                <ScalarProperty Name="Destino" ColumnName="Destino" />
+                <ScalarProperty Name="Distancia" ColumnName="Distancia" />
+                <ScalarProperty Name="Duracion_Estimada" ColumnName="Duracion_Estimada" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="bdModel.Tickets">
+              <MappingFragment StoreEntitySet="Tickets">
+                <ScalarProperty Name="ID_Ticket" ColumnName="ID_Ticket" />
+                <ScalarProperty Name="ID_Reserva" ColumnName="ID_Reserva" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Estado_Pago" ColumnName="Estado_Pago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ObtenerCedulaConductor" FunctionName="bdModel.Store.ObtenerCedulaConductor" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
