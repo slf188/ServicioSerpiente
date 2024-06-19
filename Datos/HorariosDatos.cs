@@ -8,7 +8,7 @@ using AccesoDatos;
 
 namespace Datos
 {
-    public class HorariosDatos : IDatos<Horarios>
+    public class HorariosDatos : IDatos<Horario>
     {
         servicioEntities contexto;
 
@@ -17,7 +17,7 @@ namespace Datos
             contexto = new servicioEntities();
         }
 
-        public bool Actualizar(Horarios item)
+        public bool Actualizar(Horario item)
         {
             if(item != null)
             {
@@ -28,12 +28,12 @@ namespace Datos
             return false;
         }
 
-        public Horarios BuscarID(int id)
+        public Horario BuscarID(int id)
         {
             return contexto.Horarios.Where(h => h.ID_Horario == id).FirstOrDefault();
         }
 
-        public bool Eliminar(Horarios item)
+        public bool Eliminar(Horario item)
         {
             if (item != null)
             {
@@ -44,12 +44,12 @@ namespace Datos
             return false;
         }
 
-        public List<Horarios> Listar()
+        public List<Horario> Listar()
         {
             return contexto.Horarios.ToList();
         }
 
-        public bool Nuevo(Horarios item)
+        public bool Nuevo(Horario item)
         {
             contexto.Horarios.Add(item);
             return contexto.SaveChanges() > 0;

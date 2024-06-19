@@ -18,31 +18,32 @@ namespace Negocio
         }
 
         // All
-        public List<Reservas> Listar()
+        public List<Reserva> All()
         {
             return reservas.Listar();
         }
 
         // ById
-        public Reservas ById(int id)
+        public Reserva ByID(int id)
         {
             return reservas.Listar().Where(x => x.ID_Reserva == id).FirstOrDefault();
         }
 
         // InsertarReservas
-        public bool InsertartReservas(Reservas item)
+        public bool InsertarReservas(Reserva item)
         {
             return reservas.Nuevo(item);
         }
 
         // EliminarReservas
-        public bool EliminarReservas(Reservas item)
+        public bool EliminarReservas(int id)
         {
+            Reserva item = reservas.BuscarID(id);
             return reservas.Eliminar(item);
         }
 
         // ActualizarReservas
-        public bool ActualizarReservas(Reservas item)
+        public bool ActualizarReservas(Reserva item)
         {
             return reservas.Actualizar(item);
         }

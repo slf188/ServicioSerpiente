@@ -7,7 +7,7 @@ using AccesoDatos;
 
 namespace Datos
 {
-    public class RutasDatos : IDatos<Rutas>
+    public class RutasDatos : IDatos<Ruta>
     {
         servicioEntities contexto;
 
@@ -16,7 +16,7 @@ namespace Datos
             contexto = new servicioEntities();
         }
 
-        public bool Actualizar(Rutas item)
+        public bool Actualizar(Ruta item)
         {
             if(item != null)
             {
@@ -27,13 +27,13 @@ namespace Datos
             return false;
         }
 
-        public Rutas BuscarID(int id)
+        public Ruta BuscarID(int id)
         {
 
             return contexto.Rutas.Where(r => r.ID_Ruta == id).FirstOrDefault();
         }
 
-        public bool Eliminar(Rutas item)
+        public bool Eliminar(Ruta item)
         {
             if (item != null)
             {
@@ -44,12 +44,12 @@ namespace Datos
             return false;
         }
 
-        public List<Rutas> Listar()
+        public List<Ruta> Listar()
         {
             return contexto.Rutas.ToList();
         }
 
-        public bool Nuevo(Rutas item)
+        public bool Nuevo(Ruta item)
         {
             contexto.Rutas.Add(item);
             return contexto.SaveChanges() > 0;

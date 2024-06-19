@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bdModelStoreContainer" CdmEntityContainer="servicioEntities">
+    <EntitySetMapping Name="Buses">
+      <EntityTypeMapping TypeName="bdModel.Bus">
+        <MappingFragment StoreEntitySet="Buses">
+          <ScalarProperty Name="ID_Bus" ColumnName="ID_Bus" />
+          <ScalarProperty Name="NumUnidadBus" ColumnName="NumUnidadBus" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Capacidad_Pasajeros" ColumnName="Capacidad_Pasajeros" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Conductores">
+      <EntityTypeMapping TypeName="bdModel.Conductore">
+        <MappingFragment StoreEntitySet="Conductores">
+          <ScalarProperty Name="ID_Conductor" ColumnName="ID_Conductor" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="ConduTelefono" ColumnName="ConduTelefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Horarios">
+      <EntityTypeMapping TypeName="bdModel.Horario">
+        <MappingFragment StoreEntitySet="Horarios">
+          <ScalarProperty Name="ID_Horario" ColumnName="ID_Horario" />
+          <ScalarProperty Name="ID_Ruta" ColumnName="ID_Ruta" />
+          <ScalarProperty Name="ID_Bus" ColumnName="ID_Bus" />
+          <ScalarProperty Name="ID_Conductor" ColumnName="ID_Conductor" />
+          <ScalarProperty Name="Dia_Semana" ColumnName="Dia_Semana" />
+          <ScalarProperty Name="Hora_Salida" ColumnName="Hora_Salida" />
+          <ScalarProperty Name="Hora_Llegada" ColumnName="Hora_Llegada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pasajeros">
+      <EntityTypeMapping TypeName="bdModel.Pasajero">
+        <MappingFragment StoreEntitySet="Pasajeros">
+          <ScalarProperty Name="ID_Pasajero" ColumnName="ID_Pasajero" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Correo_Electronico" ColumnName="Correo_Electronico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservas">
+      <EntityTypeMapping TypeName="bdModel.Reserva">
+        <MappingFragment StoreEntitySet="Reservas">
+          <ScalarProperty Name="ID_Reserva" ColumnName="ID_Reserva" />
+          <ScalarProperty Name="ID_Horario" ColumnName="ID_Horario" />
+          <ScalarProperty Name="ID_Pasajero" ColumnName="ID_Pasajero" />
+          <ScalarProperty Name="Numero_Asientos_Reservados" ColumnName="Numero_Asientos_Reservados" />
+          <ScalarProperty Name="Estado_Reserva" ColumnName="Estado_Reserva" />
+          <ScalarProperty Name="Fecha_Reserva" ColumnName="Fecha_Reserva" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rutas">
+      <EntityTypeMapping TypeName="bdModel.Ruta">
+        <MappingFragment StoreEntitySet="Rutas">
+          <ScalarProperty Name="ID_Ruta" ColumnName="ID_Ruta" />
+          <ScalarProperty Name="Origen" ColumnName="Origen" />
+          <ScalarProperty Name="Destino" ColumnName="Destino" />
+          <ScalarProperty Name="Distancia" ColumnName="Distancia" />
+          <ScalarProperty Name="Duracion_Estimada" ColumnName="Duracion_Estimada" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tickets">
+      <EntityTypeMapping TypeName="bdModel.Ticket">
+        <MappingFragment StoreEntitySet="Tickets">
+          <ScalarProperty Name="ID_Ticket" ColumnName="ID_Ticket" />
+          <ScalarProperty Name="ID_Reserva" ColumnName="ID_Reserva" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Estado_Pago" ColumnName="Estado_Pago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ObtenerCedulaConductor" FunctionName="bdModel.Store.ObtenerCedulaConductor" />
+  </EntityContainerMapping>
+</Mapping>

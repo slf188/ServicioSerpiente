@@ -18,31 +18,32 @@ namespace Negocio
         }
 
         // all
-        public List<Tickets> All()
+        public List<Ticket> All()
         {
             return tickets.Listar();
         }
 
         // ByID
-        public Tickets ByID(int id)
+        public Ticket ByID(int id)
         {
             return tickets.Listar().Where(x => x.ID_Ticket == id).FirstOrDefault();
         }
 
         // insertarTickets
-        public bool InsertarTickets(Tickets item)
+        public bool InsertarTickets(Ticket item)
         {
             return tickets.Nuevo(item);
         }
 
         // EliminarTickets
-        public bool EliminarTickets(Tickets item)
+        public bool EliminarTickets(int id)
         {
-            return tickets.Eliminar(item);
+            Ticket ticket = tickets.BuscarID(id);
+            return tickets.Eliminar(ticket);
         }
 
         // ActualizarTickets
-        public bool ActualizarTickets(Tickets item)
+        public bool ActualizarTickets(Ticket item)
         {
             return tickets.Actualizar(item);
         }

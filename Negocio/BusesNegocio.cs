@@ -10,39 +10,40 @@ namespace Negocio
 {
     public class BusesNegocio
     {
-        BusesDatos buses;
+        BusDatos buses;
 
         public BusesNegocio()
         {
-            buses = new BusesDatos();
+            buses = new BusDatos();
         }
 
         // All
-        public List<Buses> All()
+        public List<Bus> All()
         {
             return buses.Listar();
         }
 
         // ById
-        public Buses ById(int id)
+        public Bus ByID(int id)
         {
             return buses.Listar().Where(x => x.ID_Bus == id).FirstOrDefault();
         }
 
         // InsertarBuses
-        public bool InsertarBuses(Buses item)
+        public bool InsertarBuses(Bus item)
         {
             return buses.Nuevo(item);
         }
 
         // EliminarBuses
-        public bool EliminarBuses(Buses item)
+        public bool EliminarBuses(int id)
         {
-            return buses.Eliminar(item);
+            Bus bus = buses.BuscarID(id);
+            return buses.Eliminar(bus);
         }
 
         // ActualizarBuses
-        public bool ActualizarBuses(Buses item)
+        public bool ActualizarBuses(Bus item)
         {
             return buses.Actualizar(item);
         }

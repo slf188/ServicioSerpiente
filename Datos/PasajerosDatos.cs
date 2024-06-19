@@ -8,7 +8,7 @@ using AccesoDatos;
 
 namespace Datos
 {
-    public class PasajerosDatos : IDatos<Pasajeros>
+    public class PasajerosDatos : IDatos<Pasajero>
     {
         servicioEntities contexto;
 
@@ -17,7 +17,7 @@ namespace Datos
             contexto = new servicioEntities();
         }
 
-        public bool Actualizar(Pasajeros item)
+        public bool Actualizar(Pasajero item)
         {
             if(item != null)
             {
@@ -28,12 +28,12 @@ namespace Datos
             return false;
         }
 
-        public Pasajeros BuscarID(int id)
+        public Pasajero BuscarID(int id)
         {
             return contexto.Pasajeros.Where(p => p.ID_Pasajero == id).FirstOrDefault();
         }
 
-        public bool Eliminar(Pasajeros item)
+        public bool Eliminar(Pasajero item)
         {
             if (item != null)
             {
@@ -44,12 +44,12 @@ namespace Datos
             return false;
         }
 
-        public List<Pasajeros> Listar()
+        public List<Pasajero> Listar()
         {
             return contexto.Pasajeros.ToList();
         }
 
-        public bool Nuevo(Pasajeros item)
+        public bool Nuevo(Pasajero item)
         {
             contexto.Pasajeros.Add(item);
             return contexto.SaveChanges() > 0;

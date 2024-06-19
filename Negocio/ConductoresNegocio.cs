@@ -12,42 +12,41 @@ namespace Negocio
     {
         ConductoresDatos conductores;
 
-        ConductoresNegocio()
+        public ConductoresNegocio()
         {
             conductores = new ConductoresDatos();
         }
 
         // All
-        public List<Conductores> All()
+        public List<Conductore> All()
         {
 
-           return conductores.Listar();
+            return conductores.Listar();
         }
 
         // ById
-        public Conductores ById(int id)
+        public Conductore ByID(int id)
         {
             return conductores.Listar().Where(x => x.ID_Conductor == id).FirstOrDefault();
         }
 
         // InsertarConductores
-        public bool InsertarConductores(Conductores item)
+        public bool InsertarConductores(Conductore item)
         {
             return conductores.Nuevo(item);
         }
 
         // EliminarConductores
-        public bool EliminarConductores(Conductores item)
+        public bool EliminarConductores(int id)
         {
+            Conductore item = conductores.BuscarID(id);
             return conductores.Eliminar(item);
         }
 
         // ActualizarConductores
-        public bool ActualizarConductores(Conductores item)
+        public bool ActualizarConductores(Conductore item)
         {
             return conductores.Actualizar(item);
         }
-
-
     }
 }

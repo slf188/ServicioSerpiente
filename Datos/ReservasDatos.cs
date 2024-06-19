@@ -7,7 +7,7 @@ using AccesoDatos;
 
 namespace Datos
 {
-    public class ReservasDatos : IDatos<Reservas>
+    public class ReservasDatos : IDatos<Reserva>
     {
         servicioEntities contexto;
 
@@ -16,7 +16,7 @@ namespace Datos
             contexto = new servicioEntities();
         }
 
-        public bool Actualizar(Reservas item)
+        public bool Actualizar(Reserva item)
         {
             if(item != null)
             {
@@ -27,12 +27,12 @@ namespace Datos
             return false;
         }
 
-        public Reservas BuscarID(int id)
+        public Reserva BuscarID(int id)
         {
             return contexto.Reservas.Where(r => r.ID_Reserva == id).FirstOrDefault();
         }
 
-        public bool Eliminar(Reservas item)
+        public bool Eliminar(Reserva item)
         {
             if(item != null)
             {
@@ -43,12 +43,12 @@ namespace Datos
             return false;
         }
 
-        public List<Reservas> Listar()
+        public List<Reserva> Listar()
         {
             return contexto.Reservas.ToList();
         }
 
-        public bool Nuevo(Reservas item)
+        public bool Nuevo(Reserva item)
         {
             contexto.Reservas.Add(item);
             return contexto.SaveChanges() > 0;

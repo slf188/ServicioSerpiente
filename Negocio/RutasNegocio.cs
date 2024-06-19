@@ -18,31 +18,32 @@ namespace Negocio
         }
 
         // All
-        public List<Rutas> All()
+        public List<Ruta> All()
         {
             return rutas.Listar();
         }
 
         // ById
-        public Rutas ById(int id)
+        public Ruta ByID(int id)
         {
             return rutas.Listar().Where(x => x.ID_Ruta == id).FirstOrDefault();
         }
 
         // InsertarRutas
-        public bool InsertarRutas(Rutas item)
+        public bool InsertarRutas(Ruta item)
         {
             return rutas.Nuevo(item);
         }
 
         // EliminarRutas
-        public bool EliminarRutas(Rutas item)
+        public bool EliminarRutas(int id)
         {
+            Ruta item = rutas.BuscarID(id);
             return rutas.Eliminar(item);
         }
 
         // ActualizarRutas
-        public bool ActualizarRutas(Rutas item)
+        public bool ActualizarRutas(Ruta item)
         {
             return rutas.Actualizar(item);
         }

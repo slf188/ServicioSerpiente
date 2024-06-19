@@ -18,31 +18,32 @@ namespace Negocio
         }
 
         // All
-        public List<Pasajeros> All()
+        public List<Pasajero> All()
         {
             return pasajeros.Listar();
         }
 
         // ById
-        public Pasajeros ById(int id)
+        public Pasajero ByID(int id)
         {
             return pasajeros.Listar().Where(x => x.ID_Pasajero == id).FirstOrDefault();
         }
 
         // InsertarPasajeros
-        public bool InsertarPasajeros(Pasajeros item)
+        public bool InsertarPasajeros(Pasajero item)
         {
             return pasajeros.Nuevo(item);
         }
 
         // EliminarPasajeros
-        public bool EliminarPasajeros(Pasajeros item)
+        public bool EliminarPasajeros(int id)
         {
+            Pasajero item = pasajeros.BuscarID(id);
             return pasajeros.Eliminar(item);
         }
 
         // ActualizarPasajeros
-        public bool ActualizarPasajeros(Pasajeros item)
+        public bool ActualizarPasajeros(Pasajero item)
         {
             return pasajeros.Actualizar(item);
         }

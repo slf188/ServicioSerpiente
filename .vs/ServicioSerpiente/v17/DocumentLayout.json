@@ -1,12 +1,89 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\evest\\source\\repos\\ServicioSerpiente\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\LuisVallejo\\source\\repos\\ServicioSerpiente\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{405BEDA6-C6C8-45A0-A972-CD609612EC24}|ApiREST\\ApiREST.csproj|c:\\users\\luisvallejo\\source\\repos\\servicioserpiente\\apirest\\controllers\\conductorescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{405BEDA6-C6C8-45A0-A972-CD609612EC24}|ApiREST\\ApiREST.csproj|solutionrelative:apirest\\controllers\\conductorescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{405BEDA6-C6C8-45A0-A972-CD609612EC24}|ApiREST\\ApiREST.csproj|C:\\Users\\LuisVallejo\\source\\repos\\ServicioSerpiente\\ApiREST\\Controllers\\TicketsController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{405BEDA6-C6C8-45A0-A972-CD609612EC24}|ApiREST\\ApiREST.csproj|solutionrelative:ApiREST\\Controllers\\TicketsController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3615BF8E-B08C-4797-8B93-437A5F876FCC}|Negocio\\Negocio.csproj|C:\\Users\\LuisVallejo\\source\\repos\\ServicioSerpiente\\Negocio\\TicketsNegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3615BF8E-B08C-4797-8B93-437A5F876FCC}|Negocio\\Negocio.csproj|solutionrelative:Negocio\\TicketsNegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3615BF8E-B08C-4797-8B93-437A5F876FCC}|Negocio\\Negocio.csproj|C:\\Users\\LuisVallejo\\source\\repos\\ServicioSerpiente\\Negocio\\ConductoresNegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3615BF8E-B08C-4797-8B93-437A5F876FCC}|Negocio\\Negocio.csproj|solutionrelative:Negocio\\ConductoresNegocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TicketsNegocio.cs",
+              "DocumentMoniker": "C:\\Users\\LuisVallejo\\source\\repos\\ServicioSerpiente\\Negocio\\TicketsNegocio.cs",
+              "RelativeDocumentMoniker": "Negocio\\TicketsNegocio.cs",
+              "ToolTip": "C:\\Users\\LuisVallejo\\source\\repos\\ServicioSerpiente\\Negocio\\TicketsNegocio.cs",
+              "RelativeToolTip": "Negocio\\TicketsNegocio.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-11T04:14:37.265Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ConductoresController.cs",
+              "DocumentMoniker": "C:\\Users\\LuisVallejo\\source\\repos\\ServicioSerpiente\\ApiREST\\Controllers\\ConductoresController.cs",
+              "RelativeDocumentMoniker": "ApiREST\\Controllers\\ConductoresController.cs",
+              "ToolTip": "C:\\Users\\LuisVallejo\\source\\repos\\ServicioSerpiente\\ApiREST\\Controllers\\ConductoresController.cs",
+              "RelativeToolTip": "ApiREST\\Controllers\\ConductoresController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-11T04:11:27.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TicketsController.cs",
+              "DocumentMoniker": "C:\\Users\\LuisVallejo\\source\\repos\\ServicioSerpiente\\ApiREST\\Controllers\\TicketsController.cs",
+              "RelativeDocumentMoniker": "ApiREST\\Controllers\\TicketsController.cs",
+              "ToolTip": "C:\\Users\\LuisVallejo\\source\\repos\\ServicioSerpiente\\ApiREST\\Controllers\\TicketsController.cs",
+              "RelativeToolTip": "ApiREST\\Controllers\\TicketsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-11T04:20:03.717Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ConductoresNegocio.cs",
+              "DocumentMoniker": "C:\\Users\\LuisVallejo\\source\\repos\\ServicioSerpiente\\Negocio\\ConductoresNegocio.cs",
+              "RelativeDocumentMoniker": "Negocio\\ConductoresNegocio.cs",
+              "ToolTip": "C:\\Users\\LuisVallejo\\source\\repos\\ServicioSerpiente\\Negocio\\ConductoresNegocio.cs",
+              "RelativeToolTip": "Negocio\\ConductoresNegocio.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-11T04:17:59.996Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
